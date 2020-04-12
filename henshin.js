@@ -141,16 +141,8 @@ function ringByCamera(callNum) {
             if (AutorizeNum == 2) playSECallFunction(mySwiper.realIndex);
         }
         else if (AutorizeNum == 2) {
-            if (mySwiper.realIndex == metalClasterHopperNum) {
-                AutorizeNum--;
-                onStandByMetal = true;
-                playSELetsRise();
-                waitTime = 1000;
-            }
-            else {
                 waitTime = 2500;
                 playSECallFunction(mySwiper.realIndex);
-            }
         }
         else if (AutorizeNum == 3) {
             waitTime = 2500;

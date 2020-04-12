@@ -7,6 +7,7 @@ var nowplaynumKey;
 var nowplaynumCommon;
 var onRingingStandby = false;
 
+var rockingNum = 4;
 var shiningAssaultHopperNum = 7;
 var metalClasterHopperNum = 8;
 var onRingingStandbyLetRise = false;
@@ -91,16 +92,13 @@ var lightLayer = document.getElementsByClassName('square-button');
     bufferLoader = new BufferLoader(
         context,
         [
-            'audio/authorize.mp3',
+            'audio/in.mp3',
             'audio/standbyLoop.mp3',
             'audio/finish.mp3',
-            'audio/impact.mp3',
-            'audio/explosion.mp3',
-            'audio/overrize.mp3',
-            'audio/finishAssault.mp3',
-            'audio/progrise.mp3',
-            'audio/LetsRise.mp3'
-
+            'audio/distopia.mp3',
+            'audio/utopia.mp3',
+            'audio/close.mp3',
+            'audio/open.mp3',
         ],
         finishedLoading
     );
@@ -116,33 +114,17 @@ function finishedLoading(bufferList) {
         bufferLoader = new BufferLoader(
             context,
             [
-                'audio/jump.mp3',
-                'audio/risingHopper.mp3',
-                'audio/rising.mp3',
+                'audio/poison.mp3',
+                'audio/stingScopeon.mp3',
+                'audio/sting.mp3',
                 'audio/wing.mp3',
                 'audio/flyingFalcon.mp3',
                 'audio/flying.mp3',
-                'audio/fang.mp3',
-                'audio/bitingShark.mp3',
-                'audio/biting.mp3',
-                'audio/fire.mp3',
-                'audio/flamingTiger.mp3',
-                'audio/flaming.mp3',
-                'audio/Blizzard.mp3',
-                'audio/freezingBear.mp3',
-                'audio/freezing.mp3',
-                'audio/press.mp3',
-                'audio/breakingMommoth.mp3',
-                'audio/breaking.mp3',
-                'audio/shiningJump.mp3',
-                'audio/shiningHopper.mp3',
-                'audio/shining.mp3',
-                'audio/hyperJump.mp3',
-                'audio/shiningAssaultHopper.mp3',
-                'audio/shiningStorm.mp3',
-                'audio/everybodyJump.mp3',
-                'audio/metalClasterHopper.mp3',
-                'audio/metalRising.mp3',
+                'audio/dodo.mp3',
+                'audio/ansatsu.mp3',
+                'audio/ansatsu.mp3',
+                'audio/kamenRider.mp3',
+                'audio/rockingHopper.mp3',
                 /*
                 'audio/.mp3',
                 'audio/.mp3',
