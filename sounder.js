@@ -227,7 +227,7 @@ function playSEMoveLever(isAuthorize) {
 
 function playSEBelt(callNum) {
     var num = 0;
-    if (callNum == shiningAssaultHopperNum) num = 5;
+    if (callNum == rockingNum) num = 7;
 
     nowplaynumCommon = num;
     console.log("Belt"+num);
