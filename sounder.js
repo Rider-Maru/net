@@ -99,6 +99,8 @@ var lightLayer = document.getElementsByClassName('square-button');
             'audio/utopia.mp3',
             'audio/close.mp3',
             'audio/open.mp3',
+            'audio/inRock.mp3',
+
         ],
         finishedLoading
     );
@@ -125,6 +127,7 @@ function finishedLoading(bufferList) {
                 'audio/ansatsu.mp3',
                 'audio/kamenRider.mp3',
                 'audio/rockingHopper.mp3',
+                'audio/Rocking.mp3',
                 /*
                 'audio/.mp3',
                 'audio/.mp3',
@@ -174,7 +177,7 @@ function playSECallFinish(callNum) {
     var num = 2 + callNum * 3;
     stopSE();
     nowplaynumCommon = 2;
-    if (callNum == shiningAssaultHopperNum) nowplaynumCommon = 6;
+    if (callNum == rockingNum) nowplaynumCommon = 7;
     console.log("Finish" + num);
     soundArrayCommon[nowplaynumCommon].connect(analyser);
     soundArrayCommon[nowplaynumCommon].start(0);
@@ -194,6 +197,16 @@ function playSECallFinish(callNum) {
             soundArrayCommon[3].start(0);
         }
     }
+}
+function playSEMoveLever(isAuthorize) {
+    var num = 15;
+    if (!isAuthorize) num++;
+
+    soundArrayCommon[num].connect(analyser);
+    soundArrayCommon[num].start(0);
+    soundArrayCommon[num] = context.createBufferSource();
+    soundArrayCommon[num].buffer = bufferListUpCommon[num];
+    soundArrayCommon[num].connect(context.destination);
 }
 
 function playSEBelt(callNum) {
