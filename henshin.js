@@ -139,12 +139,7 @@ function ringByCamera(callNum) {
     else if (callNum == 2) {
         isRing = true;
         if (onStandBy) SEstandbyStop();
-        if (onStandByMetal) {
-            onStandByMetal = false;
-            stopStandbyLetsRise();
-            if (AutorizeNum == 2) playSECallFunction(mySwiper.realIndex);
-        }
-        else if (AutorizeNum == 2) {
+        if (AutorizeNum == 2) {
                 waitTime = 2500;
                 playSECallFunction(mySwiper.realIndex);
         }

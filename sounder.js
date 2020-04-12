@@ -213,7 +213,7 @@ function playSECallFinish(callNum) {
     }
 }
 function playSEMoveLever(isAuthorize) {
-    if (moveLeverNum > 2) return;
+    if (moveLeverNum >= 2) return;
     moveLeverNum++;
     stopSE();
     var num = 5;
