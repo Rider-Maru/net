@@ -192,7 +192,6 @@ function playSECallFinish(callNum) {
         tempMoveLeverNum = moveLeverNum;
         moveLeverNum = 0;
         nowplaynumCommon = 2;
-        if (callNum == rockingNum) nowplaynumCommon = 7;
         soundArrayCommon[nowplaynumCommon].connect(analyser);
         soundArrayCommon[nowplaynumCommon].start(0);
         soundArrayCommon[nowplaynumCommon].onended = function () {
