@@ -127,7 +127,7 @@ function finishedLoading(bufferList) {
                 'audio/flying.mp3',
                 'audio/dodo.mp3',
                 'audio/ansatsu.mp3',
-                'audio/ansatsu.mp3',
+                'audio/zetsumetsu.mp3',
                 'audio/jump.mp3',
                 'audio/risingHopper.mp3',
                 'audio/rising.mp3',
