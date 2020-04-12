@@ -128,6 +128,9 @@ function finishedLoading(bufferList) {
                 'audio/dodo.mp3',
                 'audio/ansatsu.mp3',
                 'audio/ansatsu.mp3',
+                'audio/jump.mp3',
+                'audio/risingHopper.mp3',
+                'audio/rising.mp3',
                 'audio/kamenRider.mp3',
                 'audio/rockingHopper.mp3',
                 'audio/Rocking.mp3',
@@ -284,10 +287,5 @@ function stopStandbySE() {
     onRingingStandby = false;
 }
 function stopStandbyLetsRise() {
-    if (!onRingingStandbyLetRise) return;
-    soundArrayCommon[8].stop();
-    soundArrayCommon[8] = context.createBufferSource();
-    soundArrayCommon[8].buffer = bufferListUpCommon[8];
-    soundArrayCommon[8].connect(context.destination);
-    onRingingStandbyLetRise = false;
+    
 }
