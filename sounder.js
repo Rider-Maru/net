@@ -5,7 +5,10 @@ var bufferListUpKey = [];
 var nowplay;
 var nowplaynumKey;
 var nowplaynumCommon;
+var nowplaynumLoop;
 var onRingingStandby = false;
+
+var moveLeverNum=0;
 
 var rockingNum = 4;
 var shiningAssaultHopperNum = 7;
@@ -100,7 +103,7 @@ var lightLayer = document.getElementsByClassName('square-button');
             'audio/close.mp3',
             'audio/open.mp3',
             'audio/inRock.mp3',
-
+            'audio/standbyLoopRock.mp3',
         ],
         finishedLoading
     );
@@ -175,32 +178,40 @@ function playSECallFunction(callNum) {
 
 function playSECallFinish(callNum) {
     var num = 2 + callNum * 3;
+    var tempMoveLeverNum = moveLeverNum;
     stopSE();
-    nowplaynumCommon = 2;
-    if (callNum == rockingNum) nowplaynumCommon = 7;
-    console.log("Finish" + num);
+    nowplaynumCommon = 16;
     soundArrayCommon[nowplaynumCommon].connect(analyser);
     soundArrayCommon[nowplaynumCommon].start(0);
     soundArrayCommon[nowplaynumCommon].onended = function () {
-        if (nowplaynumCommon == null) return;
-        stopSE();
-        nowplaynumCommon = null;
-        nowplaynumKey = num;
-        soundArrayKey[num].connect(analyser);
-        soundArrayKey[num].start(0);
-        soundArrayKey[num].onended = function () {
-            if (nowplaynumKey == null) return;
+        if (moveLeverNum != tempMoveLeverNum) return;
+        nowplaynumCommon = 2;
+        if (callNum == rockingNum) nowplaynumCommon = 7;
+        soundArrayCommon[nowplaynumCommon].connect(analyser);
+        soundArrayCommon[nowplaynumCommon].start(0);
+        soundArrayCommon[nowplaynumCommon].onended = function () {
+            if (nowplaynumCommon == null) return;
             stopSE();
-            nowplaynumCommon = 3;
-            nowplaynumKey = null;
-            soundArrayCommon[3].connect(analyser);
-            soundArrayCommon[3].start(0);
+            nowplaynumCommon = null;
+            nowplaynumKey = num;
+            soundArrayKey[num].connect(analyser);
+            soundArrayKey[num].start(0);
+            soundArrayKey[num].onended = function () {
+                if (nowplaynumKey == null) return;
+                stopSE();
+                nowplaynumCommon = 2+moveLeverNum;
+                nowplaynumKey = null;
+                soundArrayCommon[nowplaynumCommon].connect(analyser);
+                soundArrayCommon[nowplaynumCommon].start(0);
+            }
         }
     }
 }
 function playSEMoveLever(isAuthorize) {
+    if (moveLeverNum > 2) return;
+    moveLeverNum++;
+    stopSE();
     var num = 15;
-    if (!isAuthorize) num++;
 
     soundArrayCommon[num].connect(analyser);
     soundArrayCommon[num].start(0);
@@ -220,8 +231,10 @@ function playSEBelt(callNum) {
     soundArrayCommon[num].onended = function () {
         if (nowplaynumCommon == null) return;
         if (onStandByMetal) return;
-            soundArrayCommon[1].loop = true;
-            soundArrayCommon[1].start(0);
+        nowplaynumLoop = 1;
+        if (callNum == rockingNum) nowplaynumLoop = 8;
+        soundArrayCommon[nowplaynumLoop].loop = true;
+        soundArrayCommon[nowplaynumLoop].start(0);
             onRingingStandby = true;
     }
 }
@@ -262,10 +275,10 @@ function stopSE() {
 
 function stopStandbySE() {
     if (!onRingingStandby) return;
-    soundArrayCommon[1].stop();
-    soundArrayCommon[1] = context.createBufferSource();
-    soundArrayCommon[1].buffer = bufferListUpCommon[1];
-    soundArrayCommon[1].connect(context.destination);
+    soundArrayCommon[nowplaynumLoop].stop();
+    soundArrayCommon[nowplaynumLoop] = context.createBufferSource();
+    soundArrayCommon[nowplaynumLoop].buffer = bufferListUpCommon[nowplaynumLoop];
+    soundArrayCommon[nowplaynumLoop].connect(context.destination);
     onRingingStandby = false;
 }
 function stopStandbyLetsRise() {

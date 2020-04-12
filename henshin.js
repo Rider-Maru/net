@@ -91,7 +91,10 @@ function JudgeAutorize(value) {
     if (value < threshold) {
         if (!onAuthorize) {
             onAuthorize = true;
-            if (AutorizeNum == 3) playSEMoveLever(onAuthorize);
+            if (AutorizeNum == 3) {
+                stopSE();
+                playSEMoveLever(onAuthorize);
+            }
             ringByCamera(1);
             document.getElementById("debug_bool").textContent = "true";
         }
@@ -100,7 +103,7 @@ function JudgeAutorize(value) {
     else {
         if (onAuthorize) {
             onAuthorize = false;
-            if (AutorizeNum == 3) playSEMoveLever(onAuthorize);
+            //if (AutorizeNum == 3) playSEMoveLever(onAuthorize);
             ringByCamera(2);
             document.getElementById("debug_bool").textContent = "false";
         }
@@ -146,7 +149,7 @@ function ringByCamera(callNum) {
                 playSECallFunction(mySwiper.realIndex);
         }
         else if (AutorizeNum == 3) {
-            //waitTime = 2500;
+            waitTime = 0;
             playSECallFinish(mySwiper.realIndex);
         }
     }
