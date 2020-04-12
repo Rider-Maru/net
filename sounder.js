@@ -180,11 +180,13 @@ function playSECallFinish(callNum) {
     var num = 2 + callNum * 3;
     var tempMoveLeverNum = moveLeverNum;
     stopSE();
-    nowplaynumCommon = 16;
+    nowplaynumCommon = 6;
     soundArrayCommon[nowplaynumCommon].connect(analyser);
     soundArrayCommon[nowplaynumCommon].start(0);
     soundArrayCommon[nowplaynumCommon].onended = function () {
         if (moveLeverNum != tempMoveLeverNum) return;
+        tempMoveLeverNum = moveLeverNum;
+        moveLeverNum = 0;
         nowplaynumCommon = 2;
         if (callNum == rockingNum) nowplaynumCommon = 7;
         soundArrayCommon[nowplaynumCommon].connect(analyser);
@@ -199,7 +201,7 @@ function playSECallFinish(callNum) {
             soundArrayKey[num].onended = function () {
                 if (nowplaynumKey == null) return;
                 stopSE();
-                nowplaynumCommon = 2+moveLeverNum;
+                nowplaynumCommon = 2+tempMoveLeverNum;
                 nowplaynumKey = null;
                 soundArrayCommon[nowplaynumCommon].connect(analyser);
                 soundArrayCommon[nowplaynumCommon].start(0);
@@ -211,7 +213,7 @@ function playSEMoveLever(isAuthorize) {
     if (moveLeverNum > 2) return;
     moveLeverNum++;
     stopSE();
-    var num = 15;
+    var num = 5;
 
     soundArrayCommon[num].connect(analyser);
     soundArrayCommon[num].start(0);

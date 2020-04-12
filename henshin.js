@@ -92,7 +92,7 @@ function JudgeAutorize(value) {
         if (!onAuthorize) {
             onAuthorize = true;
             if (AutorizeNum == 3) {
-                stopSE();
+                
                 playSEMoveLever(onAuthorize);
             }
             ringByCamera(1);
