@@ -188,6 +188,7 @@ function playSECallFinish(callNum) {
     soundArrayCommon[nowplaynumCommon].start(0);
     soundArrayCommon[nowplaynumCommon].onended = function () {
         if (moveLeverNum != tempMoveLeverNum) return;
+        stopSE();
         tempMoveLeverNum = moveLeverNum;
         moveLeverNum = 0;
         nowplaynumCommon = 2;
