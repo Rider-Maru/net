@@ -105,9 +105,7 @@ var lightLayer = document.getElementsByClassName('square-button');
             'audio/open.mp3',
             'audio/inRock.mp3',
             'audio/standbyLoopRock.mp3',
-            'audio/rocking_spark.mp3',
-            'audio/rocking_the_end.mp3',
-            'audio/finish001.mp3',
+
 
         ],
         finishedLoading
