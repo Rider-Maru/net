@@ -97,7 +97,7 @@ var lightLayer = document.getElementsByClassName('square-button');
         context,
         [
             'audio/in.mp3',
-            //'audio/standbyLoop.mp3',
+            'audio/standbyLoop.mp3',
             'audio/finish.mp3',
             'audio/distopia.mp3',
             'audio/utopia.mp3',
@@ -124,6 +124,7 @@ function finishedLoading(bufferList) {
         bufferLoader = new BufferLoader(
             context,
             [
+                /*
                 'audio/poison.mp3',
                 'audio/stingScopeon.mp3',
                 'audio/sting.mp3',
