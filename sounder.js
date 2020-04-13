@@ -104,6 +104,7 @@ var lightLayer = document.getElementsByClassName('square-button');
             'audio/open.mp3',
             'audio/inRock.mp3',
             'audio/standbyLoopRock.mp3',
+            'audio/nonSound.mp3',
         ],
         finishedLoading
     );
@@ -133,7 +134,7 @@ function finishedLoading(bufferList) {
                 'audio/rising.mp3',
                 'audio/kamenRider.mp3',
                 'audio/rockingHopper.mp3',
-                'audio/Rocking.mp3',
+                'audio/rocking_the_end.mp3',
                 /*
                 'audio/.mp3',
                 'audio/.mp3',
@@ -206,6 +207,7 @@ function playSECallFinish(callNum) {
                 stopSE();
                 nowplaynumCommon = 2+tempMoveLeverNum;
                 nowplaynumKey = null;
+                if (callNum == rockingNum) nowplaynumCommon = 9;
                 soundArrayCommon[nowplaynumCommon].connect(analyser);
                 soundArrayCommon[nowplaynumCommon].start(0);
             }
