@@ -140,7 +140,7 @@ function finishedLoading(bufferList) {
                 'audio/kamenRider.mp3',
                 
                 'audio/rockingHopper.mp3',
-                'audio/nonSound.mp3',
+                //'audio/nonSound.mp3',
                 /*
                 'audio/.mp3',
                 'audio/.mp3',
@@ -206,17 +206,23 @@ function playSECallFinish(callNum) {
             if (nowplaynumCommon == null) return;
             stopSE();
             nowplaynumCommon = null;
-            nowplaynumKey = num;
-            soundArrayKey[num].connect(analyser);
-            soundArrayKey[num].start(0);
-            soundArrayKey[num].onended = function () {
-                if (nowplaynumKey == null) return;
-                stopSE();
-                nowplaynumCommon = 2+tempMoveLeverNum;
-                nowplaynumKey = null;
-                if (callNum == rockingNum) nowplaynumCommon = 8 + tempMoveLeverNum;;
+            if (callNum == rockingNum) {
+                nowplaynumCommon = 8 + tempMoveLeverNum;;
                 soundArrayCommon[nowplaynumCommon].connect(analyser);
                 soundArrayCommon[nowplaynumCommon].start(0);
+            } else {
+                nowplaynumKey = num;
+                soundArrayKey[num].connect(analyser);
+                soundArrayKey[num].start(0);
+                soundArrayKey[num].onended = function () {
+                    if (nowplaynumKey == null) return;
+                    stopSE();
+                    nowplaynumCommon = 2 + tempMoveLeverNum;
+                    nowplaynumKey = null;
+                    //if (callNum == rockingNum) nowplaynumCommon = 8 + tempMoveLeverNum;;
+                    soundArrayCommon[nowplaynumCommon].connect(analyser);
+                    soundArrayCommon[nowplaynumCommon].start(0);
+                }
             }
         }
     }
