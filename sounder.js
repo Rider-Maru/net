@@ -137,8 +137,8 @@ function finishedLoading(bufferList) {
                 'audio/jump.mp3',
                 'audio/risingHopper.mp3',
                 'audio/rising.mp3',
-                /*
                 'audio/kamenRider.mp3',
+                /*
                 'audio/rockingHopper.mp3',
                 'audio/nonSound.mp3',
                 
