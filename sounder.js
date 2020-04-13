@@ -10,6 +10,7 @@ var onRingingStandby = false;
 
 var moveLeverNum=0;
 
+var risingNum = 3;
 var rockingNum = 4;
 var shiningAssaultHopperNum = 7;
 var metalClasterHopperNum = 8;
@@ -104,7 +105,10 @@ var lightLayer = document.getElementsByClassName('square-button');
             'audio/open.mp3',
             'audio/inRock.mp3',
             'audio/standbyLoopRock.mp3',
-            'audio/nonSound.mp3',
+            'audio/rocking_spark.mp3',
+            'audio/rocking_the_end.mp3',
+            'audio/finish001.mp3',
+
         ],
         finishedLoading
     );
@@ -134,7 +138,7 @@ function finishedLoading(bufferList) {
                 'audio/rising.mp3',
                 'audio/kamenRider.mp3',
                 'audio/rockingHopper.mp3',
-                'audio/rocking_the_end.mp3',
+                'audio/nonSound.mp3',
                 /*
                 'audio/.mp3',
                 'audio/.mp3',
@@ -193,6 +197,7 @@ function playSECallFinish(callNum) {
         tempMoveLeverNum = moveLeverNum;
         moveLeverNum = 0;
         nowplaynumCommon = 2;
+        if(callNum == risingNum)nowplaynumCommon = 11;
         soundArrayCommon[nowplaynumCommon].connect(analyser);
         soundArrayCommon[nowplaynumCommon].start(0);
         soundArrayCommon[nowplaynumCommon].onended = function () {
@@ -207,7 +212,7 @@ function playSECallFinish(callNum) {
                 stopSE();
                 nowplaynumCommon = 2+tempMoveLeverNum;
                 nowplaynumKey = null;
-                if (callNum == rockingNum) nowplaynumCommon = 9;
+                if (callNum == rockingNum) nowplaynumCommon = 8 + tempMoveLeverNum;;
                 soundArrayCommon[nowplaynumCommon].connect(analyser);
                 soundArrayCommon[nowplaynumCommon].start(0);
             }
