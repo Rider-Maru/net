@@ -97,7 +97,7 @@ var lightLayer = document.getElementsByClassName('square-button');
         context,
         [
             'audio/in.mp3',
-            'audio/standbyLoop.mp3',
+            //'audio/standbyLoop.mp3',
             'audio/finish.mp3',
             'audio/distopia.mp3',
             'audio/utopia.mp3',
@@ -105,7 +105,9 @@ var lightLayer = document.getElementsByClassName('square-button');
             'audio/open.mp3',
             'audio/inRock.mp3',
             'audio/standbyLoopRock.mp3',
-
+            'audio/rocking_spark.mp3',
+            'audio/rocking_the_end.mp3',
+            'audio/finish001.mp3',
 
         ],
         finishedLoading
